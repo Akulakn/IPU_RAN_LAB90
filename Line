@@ -1,0 +1,70 @@
+#https://stackoverflow.com/questions/50534617/draw-a-line-in-pygame
+
+import sys, pygame, math
+from pygame.locals import*
+
+width=1000
+height=500
+Color_screen=(49,150,100)
+Color_line=(255,0,0)
+center_x = 300
+center_y = 300
+circle_radius = 100
+x = 500
+timer = pygame.time.Clock()
+fps=30
+
+def main():
+    screen=pygame.display.set_mode((width,height))
+
+    global x
+    while True:
+        for events in pygame.event.get():
+            if events.type == QUIT:
+                sys.exit(0)
+
+        screen.fill(Color_screen)
+        while  x <= 700  :
+            screen.fill(Color_screen)
+            pygame.draw.line(screen, Color_line, (300,300), (x, math.sqrt(abs(circle_radius*circle_radius-(x-center_x)*(x-center_x)))))
+            x+=1
+            pygame.display.flip()
+            timer.tick(fps)
+
+main()
+#https://stackoverflow.com/questions/50534617/draw-a-line-in-pygame
+
+import sys, pygame
+from pygame.locals import*
+
+width=1000
+height=500
+Color_screen=(49,150,100)
+Color_line=(255,0,0)
+
+r=10
+x=130
+y=130
+
+
+timer = pygame.time.Clock()
+fps=30
+
+def main():
+    screen=pygame.display.set_mode((width,height))
+
+    global x
+    while True:
+        for events in pygame.event.get():
+            if events.type == QUIT:
+                sys.exit(0)
+
+        screen.fill(Color_screen)
+        pygame.draw.ellipse(screen, Color_line, x-r, y-r, 2*r, 2*r)
+        #pygame.draw.line(screen, Color_line, (60, 2*x), (x, 100))
+        x=x+1
+        y=y+1
+        pygame.display.flip()
+        timer.tick(fps)
+
+main()
